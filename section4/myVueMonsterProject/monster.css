@@ -1,0 +1,105 @@
+* {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+#pgHeading {
+  text-align: center;
+}
+
+#topBox {
+  text-align: center;
+  width: 100%;
+}
+
+#yourHealth,
+#monsterHealth {
+  display: inline-block;
+  width: 300px;
+  height: 30px;
+  background: gray;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 5px 0.5px gray;
+}
+
+#yourProgressBar,
+#monsterProgressBar {
+  height: 30px;
+  width: 50%;
+  background: blue;
+  border-radius: 4px;
+}
+
+#middleBox {
+  text-align: center;
+}
+
+#attackButton,
+#healButton,
+#startNew {
+  margin-top: 10px;
+  width: 200px;
+  border-radius: 4px;
+  padding: 3px 8px;
+  background: rgb(73, 204, 145);
+  font-size: 1.25em;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 1.5px 1.5px 5px 0.5px gray;
+}
+
+#attackButton:active,
+#healButton:active,
+#startNew:active,
+#special:active,
+#giveUp:active {
+  box-shadow: none;
+}
+
+#special {
+  margin-top: 10px;
+  width: 200px;
+  border-radius: 4px;
+  padding: 3px 8px;
+  background: #b84dff;
+  font-size: 1.25em;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 1.5px 1.5px 5px 0.5px gray;
+}
+
+#giveUp {
+  margin-top: 10px;
+  width: 200px;
+  border-radius: 4px;
+  padding: 3px 8px;
+  background: rgb(255, 0, 102);
+  font-size: 1.25em;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 1.5px 1.5px 5px 0.5px gray;
+}
+
+#bottomBox {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+#yourActionItem {
+  background: rgb(175, 59, 59);
+}
+
+#monsterActionItem {
+  background: rgb(84, 145, 87);
+}

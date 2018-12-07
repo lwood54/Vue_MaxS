@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Monster Figher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="monster.css" />
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Shadows+Into+Light"
+      rel="stylesheet"
+    />
+    <div id="app">
+      <h1 id="pgHeading">{{ pageHeading }}</h1>
+      <div id="topBox">
+        <div id="yourHealth">
+          <div id="yourProgressBar" :style="{width: yourHealth + '%'}"></div>
+        </div>
+        <div id="monsterHealth">
+          <div
+            id="monsterProgressBar"
+            :style="{width: monsterHealth + '%'}"
+          ></div>
+        </div>
+      </div>
+      <div id="middleBox">
+        <button id="attackButton" @click="attack" v-if="gameStart">
+          ATTACK
+        </button>
+        <button id="healButton" @click="heal" v-if="gameStart">HEAL</button>
+        <button id="special" @click="special" v-if="gameStart">
+          SPECIAL ATTACK
+        </button>
+        <button id="giveUp" @click="giveUp" v-if="gameStart">GIVE UP</button>
+        <button id="startNew" @click="start" v-if="!gameStart">
+          START NEW GAME
+        </button>
+      </div>
+      <div id="bottomBox">
+        <h2 id="bottomHeading">Action History</h2>
+        <hr />
+        <div id="resultsContainer">
+          <ul v-for="yourAction in yourActions">
+            <h3 id="yourActionItem">{{ yourAction }}</h3>
+          </ul>
+          <ul v-for="monsterAction in monsterActions">
+            <h3 id="monsterActionItem">{{ monsterAction }}</h3>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="monster.js"></script>
+  </body>
+</html>
