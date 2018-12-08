@@ -100,10 +100,14 @@ button:focus {
   margin: auto;
 }
 
-#yourActionItem {
-  background: rgb(175, 59, 59);
+#actionItem {
+  background-color: rgb(175, 59, 59);
 }
 
-#monsterActionItem {
-  background: rgb(84, 145, 87);
+.yourMessage {
+  background-color: rgb(175, 59, 59);
+}
+
+.monsterMessage {
+  background-color: rgb(59, 175, 127);
 }

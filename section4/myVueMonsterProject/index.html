@@ -45,12 +45,12 @@
         <h2 id="bottomHeading">Action History</h2>
         <hr />
         <div id="resultsContainer">
-          <ul v-for="yourAction in yourActions">
-            <h3 id="yourActionItem">{{ yourAction }}</h3>
-          </ul>
-          <ul v-for="monsterAction in monsterActions">
-            <h3 id="monsterActionItem">{{ monsterAction }}</h3>
-          </ul>
+          <div v-for="action in actions">
+            <h3 v-if="action.yourAction" :class="yourMessage">
+              {{ action.message }}
+            </h3>
+            <h3 v-else :class="monsterMessage">{{ action.message }}</h3>
+          </div>
         </div>
       </div>
     </div>
