@@ -37,7 +37,11 @@ button:focus {
   height: 30px;
   width: 50%;
   background: blue;
+  color: white;
+  font-weight: 600;
+  font-size: 1.3em;
   border-radius: 4px;
+  transition: width 500ms;
 }
 
 #middleBox {

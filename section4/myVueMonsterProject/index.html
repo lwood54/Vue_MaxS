@@ -18,13 +18,14 @@
       <h1 id="pgHeading">{{ pageHeading }}</h1>
       <div id="topBox">
         <div id="yourHealth">
-          <div id="yourProgressBar" :style="{width: yourHealth + '%'}"></div>
+          <div id="yourProgressBar" :style="{width: yourHealth + '%'}">
+            {{ yourHealth }}
+          </div>
         </div>
         <div id="monsterHealth">
-          <div
-            id="monsterProgressBar"
-            :style="{width: monsterHealth + '%'}"
-          ></div>
+          <div id="monsterProgressBar" :style="{width: monsterHealth + '%'}">
+            {{ monsterHealth }}
+          </div>
         </div>
       </div>
       <div id="middleBox">

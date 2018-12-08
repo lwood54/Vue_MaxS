@@ -15,79 +15,78 @@ let app = new Vue({
   },
   methods: {
     attack: function() {
-      let vm = this;
       let yourHealthDeduct = Math.floor(Math.random() * 10) + 1;
       let monsterHealthDeduct = Math.floor(Math.random() * 15) + 1;
-      if (vm.yourHealth - yourHealthDeduct >= 0) {
-        vm.monsterHit = yourHealthDeduct;
-        vm.yourHealth -= yourHealthDeduct;
-        vm.monsterActions.unshift(
-          'Monster attacked you for ' + yourHealthDeduct
-        );
-      } else {
-        vm.monsterActions.unshift('You lost and all your health is GONE!!!');
-        vm.yourHealth = 0;
-      }
-
-      if (vm.monsterHealth - monsterHealthDeduct >= 0) {
-        vm.yourHit = monsterHealthDeduct;
-        vm.monsterHealth -= monsterHealthDeduct;
-        vm.yourActions.unshift(
-          'You attacked VueMonster for ' + monsterHealthDeduct
-        );
-      } else {
-        vm.yourActions.unshift("You WON!!! All VueMonster's health is GONE!!!");
-        vm.monsterHealth = 0;
-      }
+      this.checkHealth(-yourHealthDeduct, -monsterHealthDeduct);
     },
     heal: function() {
-      let vm = this;
       let yourHealAmount = Math.floor(Math.random() * 5) + 1;
       let monsterHealAmount = Math.floor(Math.random() * 8) + 1;
-      if (vm.yourHealth + yourHealAmount <= 100) {
-        vm.yourHealth += yourHealAmount;
-        vm.yourActions.unshift(
-          'You were healed by ' + yourHealAmount + ' health!'
-        );
-      } else {
-        vm.yourActions.unshift('You are at MAX health!!!');
-        vm.yourHealth = 100;
-      }
-      if (vm.monsterHealth + monsterHealAmount <= 100) {
-        vm.monsterHealth += monsterHealAmount;
-        vm.monsterActions.unshift(
-          'VueMonster was healed by ' + monsterHealAmount + ' health!'
-        );
-      } else {
-        vm.monsterActions.unshift('VueMonster is at MAX health!!!');
-        vm.monsterHealth = 100;
-      }
+      this.checkHealth(yourHealAmount, monsterHealAmount);
     },
     start: function() {
-      let vm = this;
-      vm.yourHealth = 100;
-      vm.monsterHealth = 100;
-      vm.yourActions = [];
-      vm.monsterActions = [];
-      vm.gameStart = !vm.gameStart;
-      vm.specialCounter = 2;
+      this.reset();
     },
     special: function() {
-      let vm = this;
-      if (vm.specialCounter > 0) {
-        if (vm.monsterHealth - 20 >= 0) {
-          vm.monsterHealth -= 20;
-          vm.yourActions.unshift('Massive 20 point hit to monster!');
-          vm.specialCounter -= 1;
-        } else {
-          vm.monsterHealth = 0;
-          vm.yourActions.unshift('Monster has been destroyed. Health is 0!!!');
-        }
-      }
+      this.checkHealth(0, -20);
     },
     giveUp: function() {
-      let vm = this;
-      vm.gameStart = !vm.gameStart;
+      this.reset();
+    },
+    reset: function() {
+      this.gameStart = !this.gameStart;
+      this.yourHealth = 100;
+      this.monsterHealth = 100;
+      this.yourActions = [];
+      this.monsterActions = [];
+      this.specialCounter = 2;
+    },
+    checkHealth: function(yourHealthChange, monsterHealthChange) {
+      if (yourHealthChange > 0) {
+        if (this.yourHealth + yourHealthChange < 100) {
+          this.yourHealth += yourHealthChange;
+          this.yourActions.unshift(
+            'Your health increased by ' + yourHealthChange
+          );
+        } else {
+          this.yourHealth = 100;
+          alert('Your health is at max...');
+        }
+      } else if (yourHealthChange < 0) {
+        if (this.yourHealth + yourHealthChange > 0) {
+          this.yourHealth += yourHealthChange;
+          this.yourActions.unshift(
+            'VueMonster took away ' + yourHealthChange + 'health.'
+          );
+        } else {
+          this.yourHealth = 0;
+          this.reset();
+          alert('Sorry, you lost...');
+        }
+      }
+
+      if (monsterHealthChange > 0) {
+        if (this.monsterHealth + monsterHealthChange < 100) {
+          this.monsterHealth += monsterHealthChange;
+          this.monsterActions.unshift(
+            'VueMonster health increased by ' + monsterHealthChange
+          );
+        } else {
+          this.monsterHealth = 100;
+          alert('VueMonster health is at max...');
+        }
+      } else if (monsterHealthChange < 0) {
+        if (this.monsterHealth + monsterHealthChange > 0) {
+          this.monsterHealth += monsterHealthChange;
+          this.monsterActions.unshift(
+            'VueMonster took away ' + monsterHealthChange + 'health.'
+          );
+        } else {
+          this.monsterHealth = 0;
+          this.reset();
+          alert('You WON!!!');
+        }
+      }
     }
   }
 });
