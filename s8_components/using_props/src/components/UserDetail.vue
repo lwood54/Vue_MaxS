@@ -8,7 +8,17 @@
 
 <script>
 export default {
-  props: ["myName"],
+  props: {
+    // basic version --> props: "myName"
+    // myName: String
+    // can be multiple types --> [String, Array]
+    // can be an object:
+    myName: {
+      type: String,
+      required: true, // optional validation
+      default: "Logan" // optional validation
+    }
+  },
   methods: {
     switchName() {
       return this.myName
