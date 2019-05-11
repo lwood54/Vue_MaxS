@@ -1,24 +1,23 @@
 <template>
-      <div>
-            <first-form :formTitle="title" />
-      </div>
+	<div>
+		<first-form :formTitle="title"/>
+	</div>
 </template>
 
 <script>
-import FirstForm from '../components/FirstForm.vue';
+	import FirstForm from "../components/FirstForm.vue";
 
-export default {
-      data: function() {
-            return {
-                  title: "Insubuy"
-            }
-      },
-      components: {
-            'first-form': FirstForm
-      }
-}
+	export default {
+		data: function() {
+			return {
+				title: "Insubuy"
+			};
+		},
+		components: {
+			"first-form": FirstForm
+		}
+	};
 </script>
 
 <style>
-
 </style>

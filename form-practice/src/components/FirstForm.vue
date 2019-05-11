@@ -2,15 +2,12 @@
 	<div>
 		<h1>{{ formTitle }}</h1>
 		<form @submit.prevent="handleSubmit">
-			<form-date-picker
-				:validateDate="triggerValidation"
-				@reset="handleReset"
-			/>
-			<hr />
-			<form-policy-picker />
-			<hr />
-			<form-citizenship-picker />
-			<hr />
+			<form-date-picker :validateDate="triggerValidation" @reset="handleReset"/>
+			<hr>
+			<form-policy-picker/>
+			<hr>
+			<form-citizenship-picker :validateCitizenship="triggerValidation" @reset="handleReset"/>
+			<hr>
 			<button type="submit">Get Quotes</button>
 		</form>
 	</div>
@@ -18,7 +15,7 @@
 
 
 <script>
-      import DatePicker from "./DatePicker.vue";
+	import DatePicker from "./DatePicker.vue";
 	import PolicyPicker from "./PolicyPicker";
 	import CitizenshipPicker from "./CitizenshipPicker";
 	export default {
