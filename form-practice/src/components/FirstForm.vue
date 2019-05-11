@@ -2,11 +2,14 @@
 	<div>
 		<h1>{{ formTitle }}</h1>
 		<form @submit.prevent="handleSubmit">
-			<!-- <form-date-picker :validateDate="triggerValidation" @reset="handleReset"/> -->
+			<form-date-picker :validateDate="triggerDateValidation" @reset="handleDate"/>
 			<hr>
 			<form-policy-picker/>
 			<hr>
-			<form-citizenship-picker :validateCitizenship="triggerValidation" @reset="handleReset"/>
+			<form-citizenship-picker
+				:validateCitizenship="triggerCitizenshipValidation"
+				@citizenshipValidation="handleCitizenship"
+			/>
 			<hr>
 			<button type="submit">Get Quotes</button>
 		</form>
@@ -21,7 +24,10 @@
 	export default {
 		data: function() {
 			return {
-				triggerValidation: false
+				triggerDateValidation: false,
+				isDateValid: false,
+				triggerCitizenshipValidation: false,
+				isCitizenshipValid: false
 			};
 		},
 		props: {
@@ -30,16 +36,30 @@
 				required: true
 			}
 		},
-		computed: {},
+		watch: {
+			allFieldsValid: function() {
+				if (this.allFieldsValid) {
+					this.$router.push("/quotes-page");
+				}
+			}
+		},
+		computed: {
+			allFieldsValid: function() {
+				return this.isDateValid && this.isCitizenshipValid;
+			}
+		},
 		methods: {
 			handleSubmit: function() {
-				this.triggerValidation = true;
-				console.log("So let it be done...");
+				this.triggerDateValidation = true;
+				this.triggerCitizenshipValidation = true;
 			},
-			handleReset: function(val) {
-				this.triggerValidation = val[0];
-				console.log("Form triggerValidation reset to: ", val[0]);
-				console.log("Extra message: ", val[1]);
+			handleDate: function(val) {
+				this.triggerDateValidation = !val.reset;
+				this.isDateValid = val.isDateValid;
+			},
+			handleCitizenship: function(val) {
+				this.triggerCitizenshipValidation = !val.reset;
+				this.isCitizenshipValid = val.isCitizenshipValid;
 			}
 		},
 		components: {

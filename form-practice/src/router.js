@@ -31,6 +31,11 @@ export default new Router({
 			path: "/insubuy",
 			name: "insubuy",
 			component: () => import("./views/Insubuy.vue")
-		}
+            },
+            {
+                  path: "/quotes-page",
+                  name: "quotes-page",
+                  component: () => import("./views/QuotesPage.vue")
+            }
 	]
 });

@@ -61,24 +61,23 @@
 		watch: {
 			// observe any changes made to validateDate
 			validateDate: function() {
-				console.log("validateDate is: ", this.validateDate);
 				// if true is passed for that prop, then it triggers the validation action
 				if (this.validateDate) {
 					this.validateStart(); // run validation check for both start and end
 					this.validateEnd();
 					// emit a response so parent knows to reset trigger activation
-					this.$emit("reset", [
-						false,
-						"extra emitter message for testing"
-					]);
+					this.$emit("reset", {
+						reset: true,
+						isDateValid:
+							this.validStartDate && this.validEndDate
+								? true
+								: false
+					});
 					// could do this:
 					// this.$emit("reset", false);
 					// or just this.$emit("reset"), then use that to trigger a handler to reset
 					// whatever is needed
 				}
-				console.log(
-					"validateDate was false, so skip running functions"
-				);
 			},
 			startDate: function() {
 				// if date selector is changed, then reset validation to remove warning
@@ -95,7 +94,6 @@
 			validateStart: function() {
 				// change boolean to trigger after checking validation
 				if (this.startDate > this.endDate && this.startDate !== "") {
-					console.log("validateStart() ran");
 					this.validStartDate = false;
 				} else {
 					this.validStartDate = true;
@@ -103,7 +101,6 @@
 			},
 			validateEnd: function() {
 				if (this.endDate < this.startDate && this.endDate !== "") {
-					console.log("validateEnd() ran");
 					this.validEndDate = false;
 				} else {
 					this.validEndDate = true;

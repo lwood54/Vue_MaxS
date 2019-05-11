@@ -2,7 +2,6 @@
 	<div>
 		<label for="citizenship">Citizenship</label>
 		<input v-model="citizenship" @focus="clear" placeholder>
-		<!-- <button @click="checkValid" type="button">Check</button> -->
 	</div>
 </template>
 
@@ -11,7 +10,7 @@
 		data: function() {
 			return {
 				citizenship: "",
-				valid: false
+				isValid: false
 			};
 		},
 		props: {
@@ -23,38 +22,27 @@
 		watch: {
 			validateCitizenship: function() {
 				if (this.validateCitizenship) {
-					console.log(
-						"validateCitizenship was true, so this should run"
-					);
 					this.checkValid();
-				} else {
-					console.log(
-						"validateCitizenship was false: ",
-						this.validateCitizenship
-					);
 				}
 			}
 		},
 		methods: {
 			clear: function() {
-				if (!this.valid) {
+				if (!this.isValid) {
 					this.citizenship = "";
 				}
 			},
 			checkValid: function() {
 				if (this.citizenship === "hello") {
-					console.log(
-						"checkValid is running, this.valid set to true"
-					);
-					this.valid = true;
+					this.isValid = true;
 				} else {
-					this.valid = false;
+					this.isValid = false;
 					this.citizenship = "must be valid country";
 				}
-				this.$emit("reset", [
-					false,
-					"emitter message from CitizenshipPicker"
-				]);
+				this.$emit("citizenshipValidation", {
+					reset: true,
+					isCitizenshipValid: this.isValid
+				});
 			}
 		}
 	};
