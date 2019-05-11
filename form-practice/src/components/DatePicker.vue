@@ -61,6 +61,7 @@
 		watch: {
 			// observe any changes made to validateDate
 			validateDate: function() {
+				console.log("validateDate is: ", this.validateDate);
 				// if true is passed for that prop, then it triggers the validation action
 				if (this.validateDate) {
 					this.validateStart(); // run validation check for both start and end

@@ -2,7 +2,7 @@
 	<div>
 		<h1>{{ formTitle }}</h1>
 		<form @submit.prevent="handleSubmit">
-			<form-date-picker :validateDate="triggerValidation" @reset="handleReset"/>
+			<!-- <form-date-picker :validateDate="triggerValidation" @reset="handleReset"/> -->
 			<hr>
 			<form-policy-picker/>
 			<hr>
