@@ -18,25 +18,31 @@
 
 
 <script>
+	/*
+	      BUG: If you put in correct country and wrong date, then submit, then change to valid dates, but also
+	      change country to invalid, it will still send the form 
+	*/
 	import DatePicker from "./DatePicker.vue";
 	import PolicyPicker from "./PolicyPicker";
 	import CitizenshipPicker from "./CitizenshipPicker";
 	export default {
 		data: function() {
 			return {
-				triggerDateValidation: false,
-				isDateValid: false,
-				triggerCitizenshipValidation: false,
-				isCitizenshipValid: false
+				triggerDateValidation: false, // will initiate action for dateValidation
+				isDateValid: false, // stores current dateValidation status
+				triggerCitizenshipValidation: false, // will initiate action for citizenshipValidation
+				isCitizenshipValid: false // stores current citizenshipValidation
 			};
 		},
 		props: {
+			// required prop for this form
 			formTitle: {
 				type: String,
 				required: true
 			}
 		},
 		watch: {
+			// watch allFieldsValid computed property and change to quotes-page if true
 			allFieldsValid: function() {
 				if (this.allFieldsValid) {
 					this.$router.push("/quotes-page");
@@ -44,6 +50,7 @@
 			}
 		},
 		computed: {
+			// compute allFieldsValid property
 			allFieldsValid: function() {
 				return this.isDateValid && this.isCitizenshipValid;
 			}
