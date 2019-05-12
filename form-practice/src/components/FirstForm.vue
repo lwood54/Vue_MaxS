@@ -19,10 +19,8 @@
 
 
 <script>
-	/*
-											       BUG: If you put in correct country and wrong date, then submit, then change to valid dates, but also
-											      change country to invalid, it will still send the form 
-											*/
+	// BUG: If you put in correct country and wrong date, then submit, then change to valid dates, but also
+	// change country to invalid, it will still send the form
 	import DatePicker from "./DatePicker.vue";
 	import PolicyPicker from "./PolicyPicker";
 	import CitizenshipPicker from "./CitizenshipPicker";
