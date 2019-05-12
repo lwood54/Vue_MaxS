@@ -7,7 +7,9 @@
 			<router-link to="/insubuy" class="navItem">Insubuy</router-link>
 			<router-link to="/insubuy2" class="navItem" exact>Insubuy 2</router-link>
 		</div>
-		<router-view/>
+		<div class="app-container">
+			<router-view/>
+		</div>
 	</div>
 </template>
 
@@ -24,7 +26,20 @@
 </script>
 
 <style lang="scss">
+	$nav-color: black;
+	$nav-hover: rgb(134, 130, 130);
+	$nav-padding: 1px 5px;
 	.navItem {
-		padding: 1px 5px;
+		padding: $nav-padding;
+		color: $nav-color;
+		text-decoration: none;
+		&:hover {
+			color: $nav-hover;
+		}
+	}
+	.app-container {
+		p {
+			/* color: green; */
+		}
 	}
 </style>

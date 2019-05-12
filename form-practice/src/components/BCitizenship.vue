@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<label for="citizenship" class="citizenship-label">Citizenship</label>
+	<div class="insubuy-form-component">
+		<label for="citizenship" class="insubuy-form-label">Citizenship</label>
 		<input v-model="citizenship" placeholder="country" @focus="handleClear">
-		<p v-if="showCitizenshipError">Please enter a valid country.</p>
+		<p v-if="showCitizenshipError" class="error-message">Please enter a valid country.</p>
 	</div>
 </template>
 
