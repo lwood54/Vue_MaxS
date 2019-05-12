@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<label for="citizenship">Citizenship</label>
-		<input v-model="citizenship" @focus="clear" placeholder>
+		<input v-model="citizenship" @focus="clear" placeholder="country">
 	</div>
 </template>
 
@@ -21,9 +21,16 @@
 		},
 		watch: {
 			validateCitizenship: function() {
-				if (this.validateCitizenship) {
-					this.checkValid();
-				}
+				this.checkValid();
+			},
+			isValid: function() {
+				this.$emit("citizenshipValidation", {
+					reset: true,
+					isCitizenshipValid: this.isValid
+				});
+			},
+			citizenship: function() {
+				this.$emit("changeValid");
 			}
 		},
 		methods: {
@@ -33,16 +40,7 @@
 				}
 			},
 			checkValid: function() {
-				if (this.citizenship === "hello") {
-					this.isValid = true;
-				} else {
-					this.isValid = false;
-					this.citizenship = "must be valid country";
-				}
-				this.$emit("citizenshipValidation", {
-					reset: true,
-					isCitizenshipValid: this.isValid
-				});
+				this.isValid = this.citizenship === "hello";
 			}
 		}
 	};

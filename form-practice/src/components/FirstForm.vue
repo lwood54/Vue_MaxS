@@ -9,6 +9,7 @@
 			<form-citizenship-picker
 				:validateCitizenship="triggerCitizenshipValidation"
 				@citizenshipValidation="handleCitizenship"
+				@changeValid="resetCitizenshipValidation"
 			/>
 			<hr>
 			<button type="submit">Get Quotes</button>
@@ -19,9 +20,9 @@
 
 <script>
 	/*
-	      BUG: If you put in correct country and wrong date, then submit, then change to valid dates, but also
-	      change country to invalid, it will still send the form 
-	*/
+											       BUG: If you put in correct country and wrong date, then submit, then change to valid dates, but also
+											      change country to invalid, it will still send the form 
+											*/
 	import DatePicker from "./DatePicker.vue";
 	import PolicyPicker from "./PolicyPicker";
 	import CitizenshipPicker from "./CitizenshipPicker";
@@ -52,7 +53,11 @@
 		computed: {
 			// compute allFieldsValid property
 			allFieldsValid: function() {
-				return this.isDateValid && this.isCitizenshipValid;
+				if (this.isDateValid && this.isCitizenshipValid) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		},
 		methods: {
@@ -67,6 +72,11 @@
 			handleCitizenship: function(val) {
 				this.triggerCitizenshipValidation = !val.reset;
 				this.isCitizenshipValid = val.isCitizenshipValid;
+			},
+			resetCitizenshipValidation: function() {
+				// added this to handle previous valid citizenship, but changed to invalid
+				// when date changed back.
+				this.isCitizenshipValid = false;
 			}
 		},
 		components: {

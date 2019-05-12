@@ -74,7 +74,7 @@
 								: false
 					});
 					// could do this:
-					// this.$emit("reset", false);
+					// this.$emit("reset", false); or this.$emit("reset", [val1, val2])
 					// or just this.$emit("reset"), then use that to trigger a handler to reset
 					// whatever is needed
 				}
