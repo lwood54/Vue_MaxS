@@ -1,5 +1,6 @@
 <template>
-	<div>
+	<div :class="styles.label">
+		<h4 :class="styles.sectionHeading">Policy Maximum</h4>
 		<select v-model="selected">
 			<option disabled value>Policy Max</option>
 			<option :value="50">$50,000</option>
@@ -23,6 +24,12 @@
 			showPolicyError: {
 				type: Boolean,
 				default: false
+			},
+			styles: {
+				type: Object
+			},
+			reset: {
+				type: Boolean
 			}
 		},
 		watch: {
@@ -32,6 +39,11 @@
 					policyVal: this.selected,
 					isPolicyValid: this.isPolicyValid
 				});
+			},
+			reset: function() {
+				if (this.reset) {
+					this.selected = "";
+				}
 			}
 		}
 	};

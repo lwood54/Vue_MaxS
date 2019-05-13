@@ -1,7 +1,24 @@
 <template>
-	<div>
-		<label for="age">Age</label>
-		<input v-model="age" placeholder="age" @focus="handleClear">
+	<div class="age-label">
+		<h4 class="label-heading">Age</h4>
+		<input
+			v-model="age"
+			placeholder="Enter your age"
+			@focus="handleClear"
+			class="age-input-fullscreen"
+		>
+
+		<div class="age-container">
+			<div class="age-title">
+				<h4 class="age-col1">#</h4>
+				<h4 class="age-col2">Age</h4>
+			</div>
+			<hr class="hr">
+			<div class="age-input-container">
+				<h3 class="age-col1">1</h3>
+				<input v-model="age" placeholder="age" @focus="handleClear" class="age-col2 age-input">
+			</div>
+		</div>
 		<p v-if="showAgeError" class="error-message">Please enter your age or year of birth.</p>
 	</div>
 </template>
@@ -19,6 +36,10 @@
 		},
 		props: {
 			showAgeError: {
+				type: Boolean,
+				default: false
+			},
+			reset: {
 				type: Boolean,
 				default: false
 			}
@@ -48,6 +69,11 @@
 							: parseInt(this.age),
 					isAgeValid: this.isAgeValid
 				});
+			},
+			reset: function() {
+				if (this.reset) {
+					this.age = "";
+				}
 			}
 		},
 		methods: {

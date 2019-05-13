@@ -1,17 +1,31 @@
 <template>
-	<div class="insubuy-form-component">
-		<label for="start">Start Date</label>
-		<input
-			v-model="startDate"
-			type="date"
-			id="start"
-			name="start-date"
-			value="startDate"
-			min="startDate"
-		>
-		<label for="end">End Date</label>
-		<input v-model="endDate" type="date" id="end" name="end-date" value="endDate" min="endDate">
-		<p v-if="showDateError" class="error-message">The start date must begin before the end date.</p>
+	<div class="date-label">
+		<h4 class="label-heading">Travel Dates (mm/dd/yyyy)</h4>
+		<div class="date-container">
+			<div class="date">
+				<input
+					v-model="startDate"
+					type="date"
+					id="start"
+					name="start-date"
+					value="startDate"
+					min="startDate"
+					class="date-selector"
+				>
+			</div>
+			<div class="date">
+				<input
+					v-model="endDate"
+					type="date"
+					id="end"
+					name="end-date"
+					value="endDate"
+					min="endDate"
+					class="date-selector"
+				>
+			</div>
+		</div>
+		<p v-if="showDateError" class="error-message">The end date must occur after the start date.</p>
 	</div>
 </template>
 
@@ -53,23 +67,17 @@
 			showDateError: {
 				type: Boolean,
 				default: false
+			},
+			reset: {
+				type: Boolean
 			}
 		},
 		watch: {
 			startDate: function() {
-				console.log("BDate - watch - startDate: ", this.startDate);
 				if (this.startDate >= this.endDate) {
 					this.isDateRangeValid = false;
-					console.log(
-						"BDate - watch - (if error) isDateRangeValid: ",
-						this.isDateRangeValid
-					);
 				} else {
 					this.isDateRangeValid = true;
-					console.log(
-						"BDate - watch - (if success) isDateRangeValid: ",
-						this.isDateRangeValid
-					);
 				}
 				this.$emit("getDate", {
 					startDate: this.startDate,
@@ -78,25 +86,22 @@
 				});
 			},
 			endDate: function() {
-				console.log("BDate - watch - endDate: ", this.endDate);
 				if (this.startDate >= this.endDate) {
 					this.isDateRangeValid = false;
-					console.log(
-						"BDate - watch - (if error) isDateRangeValid: ",
-						this.isDateRangeValid
-					);
 				} else {
 					this.isDateRangeValid = true;
-					console.log(
-						"BDate - watch - (if success) isDateRangeValid: ",
-						this.isDateRangeValid
-					);
 				}
 				this.$emit("getDate", {
 					startDate: this.startDate,
 					endDate: this.endDate,
 					isDateRangeValid: this.isDateRangeValid
 				});
+			},
+			reset: function() {
+				if (this.reset) {
+					this.startDate = fmtDate;
+					this.endDate = fmtDate;
+				}
 			}
 		}
 	};
