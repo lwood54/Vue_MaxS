@@ -1,7 +1,7 @@
 <template>
 	<div class="insubuy-form-container">
 		<div class="form-heading">
-			<img class="header-image" src="./insubuyImg.png">
+			<img class="header-image" src="../assets/insubuyImg.png">
 			<h3 class="header-title">{{formTitle}}</h3>
 		</div>
 		<form @submit.prevent="handleSubmit" class="quote-form">
