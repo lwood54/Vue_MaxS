@@ -46,6 +46,9 @@
 				</div>
 			</div>
 		</div>
+		<hr>
+		<hr>
+		<directives-practice></directives-practice>
 	</div>
 </template>
 
@@ -54,6 +57,7 @@
 	import NewQuote from "./components/NewQuote";
 	import Header from "./components/Header";
 	import UserForm from "./components/UserForm";
+	import DirectivesPractice from "./components/DirectivesPractice";
 
 	export default {
 		data() {
@@ -98,7 +102,8 @@
 			"quote-grid": QuoteGrid,
 			"new-quote": NewQuote,
 			"progress-header": Header,
-			"user-form": UserForm
+			"user-form": UserForm,
+			"directives-practice": DirectivesPractice
 		}
 	};
 </script>
