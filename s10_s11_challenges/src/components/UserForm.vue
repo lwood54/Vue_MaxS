@@ -10,6 +10,8 @@
 				Last Name
 				<input type="text" v-model="userData.lastName">
 			</label>
+			<!-- <label>Full Name</label>
+			<input type="text" v-model="userData.fullName">-->
 			<label for="email">
 				Email
 				<input type="email" v-model="userData.email">
@@ -36,12 +38,23 @@
 				userData: {
 					firstName: "",
 					lastName: "",
+					// fullName: "",
 					email: "",
 					password: "",
 					storeDataResponse: "yes"
 				}
 			};
 		},
+		// computed: {
+		// 	firstName() {
+		// 		let splitName = this.userData.fullName.split(" ");
+		// 		return splitName[0];
+		// 	},
+		// 	lastName() {
+		// 		let splitName = this.userData.fullName.split(" ");
+		// 		return splitName[splitName.length - 1];
+		// 	}
+		// },
 		methods: {
 			handleChange() {
 				this.$emit("userData", this.userData);
@@ -49,6 +62,8 @@
 			handleSubmit() {
 				this.$emit("userData", {
 					userData: this.userData,
+					// firstName: this.firstName,
+					// lastName: this.lastName,
 					isSubmitted: true
 				});
 			}

@@ -13,14 +13,13 @@
 		</div>
 		<hr>
 		<hr>
+		<user-form v-if="!isSubmitted" @userData="handleUserData"/>
 		<!-- Exercise 1 -->
 		<!-- Create a Signup Form where you retrieve the following Information -->
 		<!-- Full Name (First Name + Last Name) -->
 		<!-- Mail -->
 		<!-- Password -->
 		<!-- Store Data? Yes/No -->
-
-		<user-form v-if="!isSubmitted" @userData="handleUserData"/>
 
 		<!-- Exercise 2 -->
 		<!-- Only display the Form if it has NOT been submitted -->
@@ -37,6 +36,8 @@
 					</div>
 					<div class="panel-body">
 						<p>Full Name: {{userData.firstName}} {{userData.lastName}}</p>
+						<!-- <p>First Name: {{firstName}}</p>
+						<p>Last Name; {{lastName}}</p>-->
 						<p>Mail: {{userData.email}}</p>
 						<p>Password: {{userData.password}}</p>
 						<p>Store in Database?: {{userData.storeDataResponse}}</p>
@@ -61,6 +62,8 @@
 				maxQuotes: 10,
 				errorMessage: "",
 				userData: {},
+				// firstName: "",
+				// lastName: "",
 				isSubmitted: false
 			};
 		},
@@ -86,6 +89,8 @@
 			},
 			handleUserData(val) {
 				this.userData = val.userData;
+				this.firstName = val.firstName;
+				this.lastName = val.lastName;
 				this.isSubmitted = val.isSubmitted;
 			}
 		},
