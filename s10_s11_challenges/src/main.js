@@ -1,5 +1,10 @@
+/* eslint-disable */
 import Vue from "vue";
 import App from "./App.vue";
+
+Vue.filter('findLength', function (val) {
+      return `${val} (${val.length})`
+    })
 
 // creating custom directives globally
 Vue.directive("highlight", {

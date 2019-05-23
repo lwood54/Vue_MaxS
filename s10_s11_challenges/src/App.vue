@@ -49,6 +49,9 @@
 		<hr>
 		<hr>
 		<directives-practice></directives-practice>
+		<hr>
+		<hr>
+		<filters-mixins-practice></filters-mixins-practice>
 	</div>
 </template>
 
@@ -58,6 +61,7 @@
 	import Header from "./components/Header";
 	import UserForm from "./components/UserForm";
 	import DirectivesPractice from "./components/DirectivesPractice";
+	import FiltersAndMixins from "./components/FiltersAndMixins";
 
 	export default {
 		data() {
@@ -103,7 +107,8 @@
 			"new-quote": NewQuote,
 			"progress-header": Header,
 			"user-form": UserForm,
-			"directives-practice": DirectivesPractice
+			"directives-practice": DirectivesPractice,
+			"filters-mixins-practice": FiltersAndMixins
 		}
 	};
 </script>
