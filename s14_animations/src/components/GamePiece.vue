@@ -73,14 +73,17 @@
 </script>
 
 <style lang="scss" scoped>
+	$piece-height: 175px;
+	$piece-width: 175px;
+
 	.gamepiece-container {
-		height: 150px;
-		width: 150px;
+		height: $piece-height;
+		width: $piece-width;
 		margin: 5px;
 	}
 	.game-piece {
-		height: 150px;
-		width: 150px;
+		height: $piece-height;
+		width: $piece-width;
 		border-radius: 3px;
 		background-color: #94aacc;
 		display: flex;
@@ -96,8 +99,8 @@
 	.match {
 		margin: 5px;
 		padding: 3px;
-		height: 150px;
-		width: 150px;
+		height: $piece-height;
+		width: $piece-width;
 		box-sizing: border-box;
 		border-radius: 3px;
 		/* z-index: 10; */
@@ -113,8 +116,8 @@
 	.cover {
 		margin: 5px;
 		padding: 3px;
-		height: 150px;
-		width: 150px;
+		height: $piece-height;
+		width: $piece-width;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;

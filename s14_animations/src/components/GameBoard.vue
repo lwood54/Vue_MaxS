@@ -1,6 +1,9 @@
 <template>
 	<div class="game-board-container">
 		<h1 class="board-title">{{title}}</h1>
+		<div class="button-container">
+			<button @click="handleGameReset" class="reset-button">Reset Cards</button>
+		</div>
 		<transition-group name="game-piece" tag="div" class="game-board">
 			<game-piece
 				v-for="card in cardDeck"
@@ -13,7 +16,6 @@
 				class="piece"
 			></game-piece>
 		</transition-group>
-		<button @click="resetClicked = true">Reset Cards</button>
 	</div>
 </template>
 
@@ -74,16 +76,12 @@
 						this.cardDeck = [...newDeck];
 						this.firstSelected = null;
 						this.secondSelected = null;
-						// setTimeout(() => {
 						this.resetClicked = true;
-						// }, 1200);
 					} else {
 						this.clickCount++;
 						this.firstSelected = null;
 						this.secondSelected = null;
-						// setTimeout(() => {
 						this.resetClicked = true;
-						// }, 1200);
 					}
 					if (this.clickCount >= 2) {
 						this.clickCount = 0;
@@ -92,18 +90,24 @@
 					this.clickCount = 0;
 					this.resetClicked = true;
 				}
+			},
+			handleGameReset() {
+				this.cardDeck = [...this.shuffleArray(this.gameContent)];
+			},
+			shuffleArray(array) {
+				let copiedArray = [...array];
+				let shuffledArray = [];
+				for (let i = 0; i < 16; i++) {
+					const randomNum = Math.floor(
+						Math.random() * copiedArray.length
+					);
+					shuffledArray.push(copiedArray.splice(randomNum, 1)[0]);
+				}
+				return shuffledArray;
 			}
 		},
 		created() {
-			let copiedArray = [...this.gameContent];
-			let shuffledArray = [];
-			for (let i = 0; i < 16; i++) {
-				const randomNum = Math.floor(
-					Math.random() * copiedArray.length
-				);
-				shuffledArray.push(copiedArray.splice(randomNum, 1)[0]);
-			}
-			this.cardDeck = [...shuffledArray];
+			this.cardDeck = [...this.shuffleArray(this.gameContent)];
 		},
 		components: {
 			"game-piece": GamePiece
@@ -117,10 +121,30 @@
 		text-align: center;
 	}
 
+	.button-container {
+		width: 100%;
+		margin: 10px 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.reset-button {
+		width: 150px;
+		height: 50px;
+		background-color: rgb(165, 65, 65);
+		color: rgb(36, 4, 4);
+		&:active {
+			background-color: rgb(36, 4, 4);
+			color: rgb(165, 65, 65);
+		}
+		cursor: pointer;
+	}
+
 	.game-board {
 		display: flex;
 		flex-direction: row;
-		width: 665px;
+		width: 900px;
 		justify-content: space-evenly;
 		margin: auto;
 		flex-wrap: wrap;
@@ -133,7 +157,7 @@
 		margin-right: 10px;
 	}
 	.game-piece-enter, .game-piece-leave-to
-	/* .list-complete-leave-active below version 2.1.8 */ {
+														            /* .list-complete-leave-active below version 2.1.8 */ {
 		opacity: 0;
 		transform: translateY(5px);
 	}
