@@ -73,7 +73,9 @@
 								});
 							}
 						});
-						this.cardDeck = [...newDeck];
+						setTimeout(() => {
+							this.cardDeck = [...newDeck];
+						}, 1000);
 						this.firstSelected = null;
 						this.secondSelected = null;
 						this.resetClicked = true;
@@ -157,7 +159,7 @@
 		margin-right: 10px;
 	}
 	.game-piece-enter, .game-piece-leave-to
-														            /* .list-complete-leave-active below version 2.1.8 */ {
+															            /* .list-complete-leave-active below version 2.1.8 */ {
 		opacity: 0;
 		transform: translateY(5px);
 	}

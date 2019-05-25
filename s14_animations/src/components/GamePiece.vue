@@ -22,9 +22,11 @@
 				<slot></slot>
 			</div>
 		</transition>
-		<div v-if="cardData.source === '' && cardData.description === '' " class="match">
-			<p>MATCH!!!</p>
-		</div>
+		<transition name="fade">
+			<div v-if="cardData.source === '' && cardData.description === '' " class="match">
+				<p>MATCH!!!</p>
+			</div>
+		</transition>
 	</div>
 </template>
 
@@ -154,6 +156,16 @@
 	.flip-leave-to {
 		/* transform: scaleY(0) translateZ(0); */
 		transform: rotateY(180deg);
+		opacity: 0;
+	}
+
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: all 1s ease-in;
+	}
+
+	.fade-enter,
+	.fade-leave-to {
 		opacity: 0;
 	}
 </style>
