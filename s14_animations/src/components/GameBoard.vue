@@ -1,8 +1,13 @@
 <template>
 	<div class="game-board-container">
 		<h1 class="board-title">{{title}}</h1>
-		<div class="button-container">
+		<div class="game-header">
 			<button @click="handleGameReset" class="reset-button">Reset Cards</button>
+			<button
+				:disabled="clickCount < 2"
+				@click="handleNextMatch"
+				:class="clickCount >= 2 ? 'next-match' : 'next-match-disabled'"
+			>Try Another Match</button>
 		</div>
 		<transition-group name="game-piece" tag="div" class="game-board">
 			<game-piece
@@ -64,8 +69,7 @@
 								newDeck.push(originalCard);
 							} else {
 								let mergeNewProps = {
-									source: "",
-									description: ""
+									matched: true
 								};
 								newDeck.push({
 									...originalCard,
@@ -78,20 +82,32 @@
 						}, 1000);
 						this.firstSelected = null;
 						this.secondSelected = null;
-						this.resetClicked = true;
 					} else {
-						this.clickCount++;
-						this.firstSelected = null;
-						this.secondSelected = null;
-						this.resetClicked = true;
+						this.secondSelected = card;
 					}
-					if (this.clickCount >= 2) {
-						this.clickCount = 0;
-					}
-				} else {
-					this.clickCount = 0;
-					this.resetClicked = true;
 				}
+			},
+			handleNextMatch() {
+				this.firstSelected = null;
+				this.secondSelected = null;
+				this.clickCount = 0;
+				// trigger reset cards flip
+				this.resetClicked = true;
+				// reset trigger flag after timeout so trigger action takes effect
+				setTimeout(() => {
+					this.resetClicked = false;
+				}, 500);
+				// 		this.clickCount++;
+				// 		this.firstSelected = null;
+				// 		this.secondSelected = null;
+				// 		this.resetClicked = true;
+				// 	}
+				// 	if (this.clickCount >= 2) {
+				// 		this.clickCount = 0;
+				// 	}
+				// } else {
+				// 	this.clickCount = 0;
+				// 	this.resetClicked = true;
 			},
 			handleGameReset() {
 				this.cardDeck = [...this.shuffleArray(this.gameContent)];
@@ -123,12 +139,10 @@
 		text-align: center;
 	}
 
-	.button-container {
-		width: 100%;
-		margin: 10px 0;
+	.game-header {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: space-evenly;
 	}
 
 	.reset-button {
@@ -136,11 +150,34 @@
 		height: 50px;
 		background-color: rgb(165, 65, 65);
 		color: rgb(36, 4, 4);
+		border-radius: 4px;
 		&:active {
 			background-color: rgb(36, 4, 4);
 			color: rgb(165, 65, 65);
 		}
 		cursor: pointer;
+	}
+
+	.next-match {
+		width: 150px;
+		height: 50px;
+		background-color: rgb(185, 38, 153);
+		color: rgb(36, 4, 4);
+		border-radius: 4px;
+		&:active {
+			background-color: rgb(36, 4, 4);
+			color: rgb(185, 38, 153);
+		}
+		cursor: pointer;
+	}
+
+	.next-match-disabled {
+		width: 150px;
+		height: 50px;
+		background-color: rgba(165, 155, 163, 0.596);
+		color: rgb(36, 4, 4);
+		border-radius: 4px;
+		cursor: not-allowed;
 	}
 
 	.game-board {
@@ -158,8 +195,8 @@
 		/* display: inline-block; */
 		margin-right: 10px;
 	}
-	.game-piece-enter, .game-piece-leave-to
-															            /* .list-complete-leave-active below version 2.1.8 */ {
+	.game-piece-enter,
+	.game-piece-leave-to {
 		opacity: 0;
 		transform: translateY(5px);
 	}

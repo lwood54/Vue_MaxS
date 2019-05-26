@@ -1,30 +1,25 @@
 <template>
 	<div class="gamepiece-container">
 		<transition name="flip" mode="in-out">
-			<div
-				class="cover"
-				v-if="!clicked && cardData.source !== '' && cardData.description !== ''"
-				@click="handleClick(cardData)"
-			>
+			<div class="cover" v-if="!clicked && !cardData.matched" @click="handleClick(cardData)">
 				<img src="../assets/images/panther-face.jpg" alt="panther face" class="cover-image">
 			</div>
 		</transition>
 
 		<transition name="flip" mode="in-out">
-			<div
-				v-if="clicked && cardData.source !== '' && cardData.description !== ''"
-				@click="handleClick(cardData)"
-				class="game-piece"
-			>
+			<!-- v-if="clicked && cardData.source !== '' && cardData.description !== ''" -->
+			<div v-if="!cardData.matched && clicked" @click="handleClick(cardData)" class="game-piece">
 				<img :src="cardData.source" :alt="cardData.name" class="images" v-if="cardData.source">
 				<p v-if="cardData.description">{{cardData.description}}</p>
-				<!-- <p v-if="cardData.description">{{cardData.name}}</p> -->
 				<slot></slot>
 			</div>
 		</transition>
 		<transition name="fade">
-			<div v-if="cardData.source === '' && cardData.description === '' " class="match">
-				<p>MATCH!!!</p>
+			<div v-if="cardData.matched " class="match">
+				<div class="image-container">
+					<img :src="cardData.source" :alt="cardData.name" class="images" v-if="cardData.source">
+					<p v-if="cardData.description">{{cardData.description}}</p>
+				</div>
 			</div>
 		</transition>
 	</div>
@@ -55,19 +50,15 @@
 		},
 		watch: {
 			resetClicked: function() {
-				if (this.resetClicked) {
-					setTimeout(() => {
-						this.clicked = false;
-					}, 1200);
-				}
+				this.clicked = false;
 			}
 		},
 		methods: {
 			handleClick: function(val) {
-				console.log("clickCount: ", this.clickCount);
 				if (this.clickCount < 2) {
 					this.clicked = !this.clicked;
 					this.$emit("card-match-id", this.cardData);
+					console.log("clickCount: ", this.clickCount);
 				}
 			}
 		}
@@ -106,13 +97,17 @@
 		box-sizing: border-box;
 		border-radius: 3px;
 		/* z-index: 10; */
-		background-color: #515fd8;
-		color: rgb(226, 226, 247);
+		background-color: #6cbb5852;
+		color: rgb(46, 61, 42);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
-		cursor: pointer;
+		cursor: not-allowed;
+	}
+
+	.image-container {
+		z-index: -1;
 	}
 
 	.cover {
