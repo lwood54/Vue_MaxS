@@ -2,7 +2,7 @@
 	<div class="gamepiece-container">
 		<transition name="flip" mode="in-out">
 			<div class="cover" v-if="!clicked && !cardData.matched" @click="handleClick(cardData)">
-				<img src="../assets/images/panther-face.jpg" alt="panther face" class="cover-image">
+				<img :src="coverImage" alt="panther face" class="cover-image">
 			</div>
 		</transition>
 
@@ -15,11 +15,11 @@
 			</div>
 		</transition>
 		<transition name="fade">
-			<div v-if="cardData.matched " class="match">
-				<div class="image-container">
-					<img :src="cardData.source" :alt="cardData.name" class="images" v-if="cardData.source">
-					<p v-if="cardData.description">{{cardData.description}}</p>
-				</div>
+			<div v-if="cardData.matched " class="match image-container">
+				<!-- <div class=""> -->
+				<img :src="cardData.source" :alt="cardData.name" class="images" v-if="cardData.source">
+				<p v-if="cardData.description">{{cardData.description}}</p>
+				<!-- </div> -->
 			</div>
 		</transition>
 	</div>
@@ -46,6 +46,9 @@
 			},
 			clickCount: {
 				type: Number
+			},
+			coverImage: {
+				required: true
 			}
 		},
 		watch: {

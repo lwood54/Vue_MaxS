@@ -1,4 +1,4 @@
-export const cardContent = [
+export const cities = [
 	{
 		name: "Austin",
 		source: require("../assets/images/austin-tx.jpg"),
@@ -93,6 +93,105 @@ export const cardContent = [
 	{
 		name: "Tokyo",
 		description: "This is the 6 most populous city in the world, located in Japan.",
+		cardMatchID: 8,
+		id: 16
+	}
+];
+
+export const porsches = [
+      {
+		name: "1974 RSR",
+		description: '14" flares, over-sized whale tail',
+		cardMatchID: 1,
+		id: 1
+      },
+      {
+		name: "1974 RSR",
+		source: require("../assets/images/1974-rsr.jpg"),
+		cardMatchID: 1,
+		id: 2
+      },
+      {
+		name: "906",
+		description: 'First 6 cylinder, fuel-injected',
+		cardMatchID: 2,
+		id: 3
+      },
+      {
+		name: "906",
+		source: require("../assets/images/906.jpg"),
+		cardMatchID: 2,
+		id: 4
+      },
+      {
+		name: "908",
+		description: '8 cylinder, fuel-injected',
+		cardMatchID: 3,
+		id: 5
+      },
+      {
+		name: "908",
+		source: require("../assets/images/908.jpg"),
+		cardMatchID: 3,
+		id: 6
+      },
+      {
+		name: "935",
+		description: '6 cylinder, turbo',
+		cardMatchID: 4,
+		id: 7
+      },
+      {
+		name: "935",
+		source: require("../assets/images/935.jpg"),
+		cardMatchID: 4,
+		id: 8
+      },
+      {
+		name: "914-6 GT",
+		description: '2 Liter, weber carb',
+		cardMatchID: 5,
+		id: 9
+      },
+      {
+		name: "914-6 GT",
+		source: require("../assets/images/914-6GT.jpg"),
+		cardMatchID: 5,
+		id: 10
+      },
+      {
+		name: "934",
+		description: 'first street based turbo race car',
+		cardMatchID: 6,
+		id: 11
+      },
+      {
+		name: "934",
+		source: require("../assets/images/934.jpg"),
+		cardMatchID: 6,
+		id: 12
+      },
+      {
+		name: "993",
+		description: 'last air-cooled 911',
+		cardMatchID: 7,
+		id: 13
+      },
+      {
+		name: "993",
+		source: require("../assets/images/993.png"),
+		cardMatchID: 7,
+		id: 14
+      },
+      {
+		name: "356 sc",
+		description: '4 cylinder, air-cooled',
+		cardMatchID: 8,
+		id: 15
+      },
+      {
+		name: "356 sc",
+		source: require("../assets/images/356sc.jpg"),
 		cardMatchID: 8,
 		id: 16
 	}

@@ -1,8 +1,9 @@
 <template>
 	<div class="game-board-container">
-		<h1 class="board-title">{{title}}</h1>
+		<h1 class="board-title">{{gameTitle}}</h1>
 		<div class="game-header">
 			<button @click="handleGameReset" class="reset-button">Reset Cards</button>
+			<h3>Incorrect Matches: {{notMatch}}</h3>
 			<button
 				:disabled="clickCount < 2"
 				@click="handleNextMatch"
@@ -14,6 +15,7 @@
 				v-for="card in cardDeck"
 				:key="card.id"
 				:cardData="card"
+				:coverImage="coverImage"
 				@card-match-id="handleCardSelection"
 				:firstSelected="firstSelected"
 				:resetClicked="resetClicked"
@@ -30,7 +32,7 @@
 	export default {
 		data: function() {
 			return {
-				title: "Matching: Cities",
+				notMatch: 0,
 				cardDeck: [],
 				clickCount: 0,
 				firstSelected: null,
@@ -41,6 +43,14 @@
 		props: {
 			gameContent: {
 				type: Array,
+				required: true
+			},
+			coverImage: {
+				type: String,
+				required: true
+			},
+			gameTitle: {
+				type: String,
 				required: true
 			}
 		},
@@ -79,38 +89,31 @@
 						});
 						setTimeout(() => {
 							this.cardDeck = [...newDeck];
+							this.handleNextMatch();
 						}, 1000);
-						this.firstSelected = null;
-						this.secondSelected = null;
 					} else {
+						this.notMatch++;
 						this.secondSelected = card;
+						setTimeout(() => {
+							this.handleNextMatch();
+						}, 2000);
 					}
 				}
 			},
 			handleNextMatch() {
-				this.firstSelected = null;
-				this.secondSelected = null;
-				this.clickCount = 0;
 				// trigger reset cards flip
 				this.resetClicked = true;
 				// reset trigger flag after timeout so trigger action takes effect
 				setTimeout(() => {
+					this.firstSelected = null;
+					this.secondSelected = null;
+					this.clickCount = 0;
 					this.resetClicked = false;
 				}, 500);
-				// 		this.clickCount++;
-				// 		this.firstSelected = null;
-				// 		this.secondSelected = null;
-				// 		this.resetClicked = true;
-				// 	}
-				// 	if (this.clickCount >= 2) {
-				// 		this.clickCount = 0;
-				// 	}
-				// } else {
-				// 	this.clickCount = 0;
-				// 	this.resetClicked = true;
 			},
 			handleGameReset() {
 				this.cardDeck = [...this.shuffleArray(this.gameContent)];
+				this.notMatch = 0;
 			},
 			shuffleArray(array) {
 				let copiedArray = [...array];
@@ -134,6 +137,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.game-board-container {
+		margin-bottom: 50px;
+	}
+
 	.board-title {
 		margin: 10px;
 		text-align: center;

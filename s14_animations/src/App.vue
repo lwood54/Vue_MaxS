@@ -2,19 +2,29 @@
 	<div>
 		<!-- <h1>S 14 - Animations</h1> -->
 		<!-- <animations-1></animations-1> -->
-		<game-board :gameContent="cardContent"></game-board>
+		<game-board
+			:gameContent="cities"
+			:coverImage="require('./assets/images/panther-face.jpg')"
+			gameTitle="Cities"
+		/>
+		<game-board
+			:gameContent="porsches"
+			:coverImage="require('./assets/images/porscheCrest.jpg')"
+			gameTitle="Porsches"
+		/>
 	</div>
 </template>
 
 <script>
 	import Animations1 from "./components/Animations1";
 	import GameBoard from "./components/GameBoard";
-	import { cardContent } from "./components/CardContent";
+	import { cities, porsches } from "./components/CardContent";
 
 	export default {
 		data() {
 			return {
-				cardContent
+				cities,
+				porsches
 			};
 		},
 		components: {
