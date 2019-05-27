@@ -61,7 +61,6 @@
 				if (this.clickCount < 2) {
 					this.clicked = !this.clicked;
 					this.$emit("card-match-id", this.cardData);
-					console.log("clickCount: ", this.clickCount);
 				}
 			}
 		}
@@ -99,7 +98,6 @@
 		width: $piece-width;
 		box-sizing: border-box;
 		border-radius: 3px;
-		/* z-index: 10; */
 		background-color: #6cbb5852;
 		color: rgb(46, 61, 42);
 		display: flex;
@@ -123,20 +121,19 @@
 		flex-direction: column;
 		justify-content: center;
 		border-radius: 3px;
-		/* z-index: 10; */
 		background-color: #cf0d0d;
 		cursor: pointer;
 	}
 
 	.cover-image {
-		max-height: 80%;
-		max-width: 80%;
+		max-height: 75%;
+		max-width: 75%;
 		margin: auto;
 	}
 
 	.images {
-		max-height: 80%;
-		max-width: 80%;
+		max-height: 95%;
+		max-width: 95%;
 		margin: auto;
 	}
 

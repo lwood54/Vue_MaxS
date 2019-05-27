@@ -4,6 +4,7 @@
 		<div class="game-header">
 			<button @click="handleGameReset" class="reset-button">Reset Cards</button>
 			<h3>Incorrect Matches: {{notMatch}}</h3>
+			<h3>Matches: {{match}}</h3>
 			<button
 				:disabled="clickCount < 2"
 				@click="handleNextMatch"
@@ -23,6 +24,11 @@
 				class="piece"
 			></game-piece>
 		</transition-group>
+		<transition name="won">
+			<div v-if="match >= 8" class="winning-message-container">
+				<h1>You WON!!!</h1>
+			</div>
+		</transition>
 	</div>
 </template>
 
@@ -33,6 +39,7 @@
 		data: function() {
 			return {
 				notMatch: 0,
+				match: 0,
 				cardDeck: [],
 				clickCount: 0,
 				firstSelected: null,
@@ -68,6 +75,7 @@
 						!this.secondSelected
 					) {
 						this.clickCount++;
+						this.match++;
 						this.secondSelected = card;
 						let newDeck = [];
 						this.cardDeck.forEach(originalCard => {
@@ -114,6 +122,7 @@
 			handleGameReset() {
 				this.cardDeck = [...this.shuffleArray(this.gameContent)];
 				this.notMatch = 0;
+				this.match = 0;
 			},
 			shuffleArray(array) {
 				let copiedArray = [...array];
@@ -139,6 +148,9 @@
 <style lang="scss" scoped>
 	.game-board-container {
 		margin-bottom: 50px;
+		width: 900px;
+		height: 100vh;
+		margin: auto;
 	}
 
 	.board-title {
@@ -150,6 +162,40 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
+	}
+
+	.game-board {
+		display: flex;
+		position: absolute;
+		flex-direction: row;
+		width: 900px;
+		justify-content: space-evenly;
+		margin: auto;
+		flex-wrap: wrap;
+		/* border: 3px solid red; */
+	}
+
+	.won-enter,
+	.won-leave-to {
+		opacity: 0;
+	}
+
+	.won-enter-active,
+	.won-leave-active {
+		transition: opacity 0.5s;
+	}
+
+	.winning-message-container {
+		position: absolute;
+		width: 900px;
+		min-height: 100vh;
+		background-color: rgb(18, 55, 156);
+		color: rgb(224, 229, 238);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		margin: auto;
 	}
 
 	.reset-button {
@@ -185,16 +231,6 @@
 		color: rgb(36, 4, 4);
 		border-radius: 4px;
 		cursor: not-allowed;
-	}
-
-	.game-board {
-		display: flex;
-		flex-direction: row;
-		width: 900px;
-		justify-content: space-evenly;
-		margin: auto;
-		flex-wrap: wrap;
-		/* border: 3px solid red; */
 	}
 
 	.piece {
