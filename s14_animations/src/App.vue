@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<!-- <h1>S 14 - Animations</h1> -->
-		<!-- <animations-1></animations-1> -->
+		<h1>S 14 - Animations</h1>
+		<animations-1></animations-1>
 		<game-board
 			:gameContent="cities"
 			:coverImage="require('./assets/images/panther-face.jpg')"
@@ -28,7 +28,7 @@
 			};
 		},
 		components: {
-			// "animations-1": Animations1,
+			"animations-1": Animations1,
 			"game-board": GameBoard
 		}
 	};
