@@ -1,5 +1,10 @@
 <template>
 	<div>
+		<quiz-app></quiz-app>
+		<hr>
+		<hr>
+		<br>
+		<br>
 		<h1>S 14 - Animations</h1>
 		<animations-1></animations-1>
 		<game-board :gameContent="cities" :coverImage="panther" gameTitle="Cities"/>
@@ -13,6 +18,7 @@
 	import { cities, porsches } from "./components/CardContent";
 	import panther from "./assets/images/panther.jpg";
 	import porscheCrest from "./assets/images/porsche-crest.jpg";
+	import QuizApp from "./components/QuizProject/QuizApp";
 
 	export default {
 		data() {
@@ -25,7 +31,8 @@
 		},
 		components: {
 			"animations-1": Animations1,
-			"game-board": GameBoard
+			"game-board": GameBoard,
+			"quiz-app": QuizApp
 		}
 	};
 </script>
