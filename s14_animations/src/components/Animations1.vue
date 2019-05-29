@@ -32,6 +32,23 @@
 					<div class="alert alert-info" v-if="show" key="alert">Info Alert</div>
 					<div class="alert alert-warning" v-else key="warn">Warning Alert</div>
 				</transition>
+				<button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>
+				<br>
+				<br>
+				<transition
+					@before-enter="beforeEnter"
+					@enter="enter"
+					@after-enter="afterEnter"
+					@enter-cancelled="enterCancelled"
+					@before-leave="beforeLeave"
+					@leave="leave"
+					@after-leave="afterLeave"
+					@leave-cancelled="leaveCancelled"
+					:css="false"
+				>
+					<!-- :css="false" tells Vue not to bother looking for CSS classes, instead skip right to JS-->
+					<div style="width: 300px; height: 100px; background-color: lightgreen" v-if="load"></div>
+				</transition>
 			</div>
 		</div>
 	</div>
@@ -41,9 +58,63 @@
 	export default {
 		data() {
 			return {
-				show: true,
-				transEffect: "fade"
+				show: false,
+				load: true,
+				transEffect: "fade",
+				elementWidth: 100
 			};
+		},
+		methods: {
+			beforeEnter(el) {
+				console.log("beforeEnter");
+				this.elementWidth = 100;
+				el.style.width = this.elementWidth + "px";
+			},
+			enter(el, done) {
+				// similar to the .enter-active part of CSS (play animation actions here)
+				console.log("enter");
+				let round = 1;
+				const interval = setInterval(() => {
+					el.style.width = this.elementWidth + round * 10 + "px";
+					round++;
+					if (round > 20) {
+						clearInterval(interval);
+						done();
+					}
+				}, 20);
+				// needed to tell Vue js once this animation finishes
+				// if you combine JS with CSS, you DON'T have to tell Vue that the animation is done
+				// because the CSS animations will take care of that
+			},
+			afterEnter(el) {
+				console.log("after enter");
+			},
+			enterCancelled(el) {
+				console.log("enterCancelled");
+			},
+			beforeLeave(el) {
+				console.log("beforeLeave");
+				this.elementWidth = 300;
+				el.style.width = this.elementWidth + "px";
+			},
+			leave(el, done) {
+				console.log("leave");
+				let round = 1;
+				const interval = setInterval(() => {
+					el.style.width = this.elementWidth - round * 10 + "px";
+					round++;
+					if (round > 20) {
+						clearInterval(interval);
+						done();
+					}
+				}, 20);
+			},
+			afterLeave(el) {
+				console.log("afterLeave");
+			},
+			leaveCancelled(el) {
+				console.log("leaveCancelled");
+			}
 		}
 	};
 </script>
