@@ -34,7 +34,6 @@
 
 <script>
 	import GamePiece from "./GamePiece";
-
 	export default {
 		data: function() {
 			return {
@@ -152,18 +151,15 @@
 		height: 100vh;
 		margin: auto;
 	}
-
 	.board-title {
 		margin: 10px;
 		text-align: center;
 	}
-
 	.game-header {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
 	}
-
 	.game-board {
 		display: flex;
 		position: absolute;
@@ -174,17 +170,14 @@
 		flex-wrap: wrap;
 		/* border: 3px solid red; */
 	}
-
 	.won-enter,
 	.won-leave-to {
 		opacity: 0;
 	}
-
 	.won-enter-active,
 	.won-leave-active {
 		transition: opacity 0.5s;
 	}
-
 	.winning-message-container {
 		position: absolute;
 		width: 900px;
@@ -197,7 +190,6 @@
 		text-align: center;
 		margin: auto;
 	}
-
 	.reset-button {
 		width: 150px;
 		height: 50px;
@@ -210,7 +202,6 @@
 		}
 		cursor: pointer;
 	}
-
 	.next-match {
 		width: 150px;
 		height: 50px;
@@ -223,7 +214,6 @@
 		}
 		cursor: pointer;
 	}
-
 	.next-match-disabled {
 		width: 150px;
 		height: 50px;
@@ -232,7 +222,6 @@
 		border-radius: 4px;
 		cursor: not-allowed;
 	}
-
 	.piece {
 		transition: all 1s;
 		/* display: inline-block; */

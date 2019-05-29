@@ -70,7 +70,6 @@
 <style lang="scss" scoped>
 	$piece-height: 175px;
 	$piece-width: 175px;
-
 	.gamepiece-container {
 		height: $piece-height;
 		width: $piece-width;
@@ -90,7 +89,6 @@
 		box-sizing: border-box;
 		cursor: pointer;
 	}
-
 	.match {
 		margin: 5px;
 		padding: 3px;
@@ -106,11 +104,9 @@
 		text-align: center;
 		cursor: not-allowed;
 	}
-
 	.image-container {
 		z-index: -1;
 	}
-
 	.cover {
 		margin: 5px;
 		padding: 3px;
@@ -124,41 +120,34 @@
 		background-color: #cf0d0d;
 		cursor: pointer;
 	}
-
 	.cover-image {
 		max-height: 75%;
 		max-width: 75%;
 		margin: auto;
 	}
-
 	.images {
 		max-height: 95%;
 		max-width: 95%;
 		margin: auto;
 	}
-
 	.flip-enter-active {
 		transition: all 0.35s cubic-bezier(0.55, 0.085, 0.68, 0.53); //ease-in-quad
 		transform-style: preserve-3d;
 	}
-
 	.flip-leave-active {
 		/* transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); //ease-out-quad */
 		display: none;
 	}
-
 	.flip-enter,
 	.flip-leave-to {
 		/* transform: scaleY(0) translateZ(0); */
 		transform: rotateY(180deg);
 		opacity: 0;
 	}
-
 	.fade-enter-active,
 	.fade-leave-active {
 		transition: all 1s ease-in;
 	}
-
 	.fade-enter,
 	.fade-leave-to {
 		opacity: 0;

@@ -1,49 +1,49 @@
 export const cities = [
 	{
 		name: "Austin",
-		source: require("../assets/images/austin-tx.jpg"),
+		source: require("../assets/images/austin-texas.jpg"),
 		cardMatchID: 1,
 		id: 1
 	},
 	{
 		name: "Dallas",
-		source: require("../assets/images/dallas-tx.jpg"),
+		source: require("../assets/images/dallas-texas.jpg"),
 		cardMatchID: 2,
 		id: 2
 	},
 	{
 		name: "New York",
-		source: require("../assets/images/new-york.jpg"),
+		source: require("../assets/images/new-york-new-york.jpg"),
 		cardMatchID: 3,
 		id: 3
 	},
 	{
 		name: "San Francisco",
-		source: require("../assets/images/san-francisco.jpg"),
+		source: require("../assets/images/san-francisco-california.jpg"),
 		cardMatchID: 4,
 		id: 4
 	},
 	{
 		name: "Santorini",
-		source: require("../assets/images/santorini.jpg"),
+		source: require("../assets/images/santorini-greece.jpg"),
 		cardMatchID: 5,
 		id: 5
 	},
 	{
 		name: "Beijing",
-		source: require("../assets/images/beijing.jpg"),
+		source: require("../assets/images/beijing-china.jpg"),
 		cardMatchID: 6,
 		id: 6
 	},
 	{
 		name: "Paris",
-		source: require("../assets/images/paris.jpg"),
+		source: require("../assets/images/paris-france.jpg"),
 		cardMatchID: 7,
 		id: 7
 	},
 	{
 		name: "Tokyo",
-		source: require("../assets/images/tokyo.jpg"),
+		source: require("../assets/images/tokyo-japan.jpg"),
 		cardMatchID: 8,
 		id: 8
 	},
@@ -99,97 +99,97 @@ export const cities = [
 ];
 
 export const porsches = [
-      {
+	{
 		name: "1974 RSR",
 		description: '14" flares, over-sized whale tail',
 		cardMatchID: 1,
 		id: 1
-      },
-      {
+	},
+	{
 		name: "1974 RSR",
 		source: require("../assets/images/1974-rsr.jpg"),
 		cardMatchID: 1,
 		id: 2
-      },
-      {
+	},
+	{
 		name: "906",
-		description: 'First 6 cylinder, fuel-injected',
+		description: "First 6 cylinder, fuel-injected",
 		cardMatchID: 2,
 		id: 3
-      },
-      {
+	},
+	{
 		name: "906",
 		source: require("../assets/images/906.jpg"),
 		cardMatchID: 2,
 		id: 4
-      },
-      {
+	},
+	{
 		name: "908",
-		description: '8 cylinder, fuel-injected',
+		description: "8 cylinder, fuel-injected",
 		cardMatchID: 3,
 		id: 5
-      },
-      {
+	},
+	{
 		name: "908",
 		source: require("../assets/images/908.jpg"),
 		cardMatchID: 3,
 		id: 6
-      },
-      {
+	},
+	{
 		name: "935",
-		description: '6 cylinder, turbo',
+		description: "6 cylinder, turbo",
 		cardMatchID: 4,
 		id: 7
-      },
-      {
+	},
+	{
 		name: "935",
 		source: require("../assets/images/935.jpg"),
 		cardMatchID: 4,
 		id: 8
-      },
-      {
+	},
+	{
 		name: "914-6 GT",
-		description: '2 Liter, weber carb',
+		description: "2 Liter, weber carb",
 		cardMatchID: 5,
 		id: 9
-      },
-      {
+	},
+	{
 		name: "914-6 GT",
 		source: require("../assets/images/914-6GT.jpg"),
 		cardMatchID: 5,
 		id: 10
-      },
-      {
+	},
+	{
 		name: "934",
-		description: 'first street based turbo race car',
+		description: "first street based turbo race car",
 		cardMatchID: 6,
 		id: 11
-      },
-      {
+	},
+	{
 		name: "934",
 		source: require("../assets/images/934.jpg"),
 		cardMatchID: 6,
 		id: 12
-      },
-      {
+	},
+	{
 		name: "993",
-		description: 'last air-cooled 911',
+		description: "last air-cooled 911",
 		cardMatchID: 7,
 		id: 13
-      },
-      {
+	},
+	{
 		name: "993",
 		source: require("../assets/images/993.png"),
 		cardMatchID: 7,
 		id: 14
-      },
-      {
+	},
+	{
 		name: "356 sc",
-		description: '4 cylinder, air-cooled',
+		description: "4 cylinder, air-cooled",
 		cardMatchID: 8,
 		id: 15
-      },
-      {
+	},
+	{
 		name: "356 sc",
 		source: require("../assets/images/356sc.jpg"),
 		cardMatchID: 8,
