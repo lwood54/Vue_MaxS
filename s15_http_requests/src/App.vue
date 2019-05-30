@@ -43,25 +43,18 @@
 			submit() {
 				// data is needed by Firebase to instruct to create a node in the db (name 'data' is flexible)
 				// .json is also required by Firebase and is not optional
-				this.$http
-					.post(
-						"https://vuejs-http-375a2.firebaseio.com/data.json",
-						this.user
-					)
-					.then(
-						response => {
-							console.log(response);
-						},
-						error => {
-							console.log("POST error: ", error);
-						}
-					);
+				this.$http.post("", this.user).then(
+					response => {
+						console.log(response);
+					},
+					error => {
+						console.log("POST error: ", error);
+					}
+				);
 			},
 			fetchData() {
 				this.$http
-					.get(
-						"https://vuejs-http-375a2.firebaseio.com/data.json"
-					)
+					.get("")
 					.then(
 						response => {
 							return response.json();
