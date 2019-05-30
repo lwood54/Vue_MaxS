@@ -3,9 +3,13 @@
 		<div class="content-container">
 			<h1>Routing</h1>
 			<hr>
-			<app-header></app-header>
-			<!-- Main router view below-->
+			<router-view name="header-top"></router-view>
 			<router-view></router-view>
+			<!-- <app-header></app-header> -->
+			<!-- Main router view below-->
+			<router-view name="header-bottom"></router-view>
+			<br>
+			<br>
 		</div>
 	</div>
 </template>

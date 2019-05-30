@@ -8,5 +8,6 @@
 <style>
 	.nav-link {
 		cursor: pointer;
+		margin: 5px;
 	}
 </style>
