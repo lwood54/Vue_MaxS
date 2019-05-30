@@ -4,6 +4,7 @@
 			<h1>Routing</h1>
 			<hr>
 			<app-header></app-header>
+			<!-- Main router view below-->
 			<router-view></router-view>
 		</div>
 	</div>

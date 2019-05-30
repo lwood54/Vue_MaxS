@@ -5,12 +5,12 @@ import UserEdit from "./components/user/UserEdit";
 import Home from "./components/Home";
 
 export const routes = [
-      { path: '', component: Home},
+      { path: '', component: Home, name: 'home'},
       { path: '/user', component: User, children: [
             // ' ' (no slash will append to the parent path --> /user)
             // '/' will append to the home path --> /
             {path: '', component: UserStart},
             {path: ':id', component: UserDetail},
-            {path: ':id/edit', component: UserEdit}
+            {path: ':id/edit', component: UserEdit, name: 'userEdit'}
       ]}
 ];
