@@ -3,13 +3,20 @@
 		<div class="content-container">
 			<h1>Routing</h1>
 			<hr>
+			<app-header></app-header>
 			<router-view></router-view>
 		</div>
 	</div>
 </template>
 
 <script>
-	export default {};
+	import Header from "./components/Header";
+
+	export default {
+		components: {
+			"app-header": Header
+		}
+	};
 </script>
 
 <style lang="scss">
