@@ -3,9 +3,14 @@
 		<p>Please select a User</p>
 		<hr>
 		<ul class="list-group">
-			<li class="list-group-item" style="cursor: pointer">User 1</li>
-			<li class="list-group-item" style="cursor: pointer">User 2</li>
-			<li class="list-group-item" style="cursor: pointer">User 3</li>
+			<router-link
+				v-for="number in 3"
+				tag="li"
+				:to="`/user/${number}`"
+				class="list-group-item"
+				style="cursor: pointer"
+				:key="number"
+			>User {{number}}</router-link>
 		</ul>
 	</div>
 </template>
