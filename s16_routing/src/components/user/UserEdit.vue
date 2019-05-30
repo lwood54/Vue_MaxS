@@ -1,7 +1,9 @@
 <template>
-    <div>
-          <h3>Edit the User</h3>
-          <p>Locale: {{ $route.query.locale}}</p>
-          <p>Analytics: {{$route.query.q}}</p>
-    </div>
+	<div>
+		<h3>Edit the User</h3>
+		<p>Locale: {{ $route.query.locale}}</p>
+		<p>Analytics: {{$route.query.q}}</p>
+		<div style="height: 700px; border: 2px solid red"></div>
+		<p id="data">Some Extra Data</p>
+	</div>
 </template>

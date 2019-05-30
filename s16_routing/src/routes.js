@@ -19,5 +19,8 @@ export const routes = [
             {path: '', component: UserStart},
             {path: ':id', component: UserDetail},
             {path: ':id/edit', component: UserEdit, name: 'userEdit'}
-      ]}
+      ]},
+      // {path: '/redirect-me', redirect: '/user'}
+      {path: '/redirect-me', redirect: {name: 'home'}}, // redirect route with explicit redirection
+      {path: '*', redirect: '/'} // catch all / wildcard will redirect to home or '/' in this case
 ];
