@@ -11,7 +11,18 @@
 					<label>Email</label>
 					<input class="form-control" type="email" v-model="user.email">
 				</div>
-				<button class="btn btn-primary" @click.prevent="submit">Submit</button>
+				<button class="btn btn-primary" @click="submit">Submit</button>
+				<hr>
+				<button class="btn btn-primary" @click="fetchData">Get Data</button>
+				<br>
+				<br>
+				<ul class="list-group">
+					<li
+						class="list-group-item"
+						v-for="user in users"
+						:key="user.email"
+					>{{user.username}} - {{user.email}}</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -24,12 +35,50 @@
 				user: {
 					username: "",
 					email: ""
-				}
+				},
+				users: []
 			};
 		},
 		methods: {
 			submit() {
-				console.log(this.user);
+				// data is needed by Firebase to instruct to create a node in the db (name 'data' is flexible)
+				// .json is also required by Firebase and is not optional
+				this.$http
+					.post(
+						"https://vuejs-http-375a2.firebaseio.com/data.json",
+						this.user
+					)
+					.then(
+						response => {
+							console.log(response);
+						},
+						error => {
+							console.log("POST error: ", error);
+						}
+					);
+			},
+			fetchData() {
+				this.$http
+					.get(
+						"https://vuejs-http-375a2.firebaseio.com/data.json"
+					)
+					.then(
+						response => {
+							return response.json();
+						},
+						error => {
+							console.log("GET error: ", error);
+						}
+					)
+					.then(data => {
+						const userData = data;
+						console.log("GET data: ", userData);
+						const resultArray = [];
+						for (let key in data) {
+							resultArray.push(data[key]);
+						}
+						this.users = resultArray;
+					});
 			}
 		}
 	};
