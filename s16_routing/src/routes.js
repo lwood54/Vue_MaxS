@@ -17,7 +17,12 @@ export const routes = [
             // ' ' (no slash will append to the parent path --> /user)
             // '/' will append to the home path --> /
             {path: '', component: UserStart},
-            {path: ':id', component: UserDetail},
+            {path: ':id', component: UserDetail, beforeEnter: (to, from, next) => {
+                  console.log('inside route setup');
+                  // this works in the exact same way as the global setup, but is specific to this route
+                  // this function can also be stored in another file and imported if desired
+                  next();
+            }},
             {path: ':id/edit', component: UserEdit, name: 'userEdit'}
       ]},
       // {path: '/redirect-me', redirect: '/user'}

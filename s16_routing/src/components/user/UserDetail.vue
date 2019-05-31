@@ -21,6 +21,18 @@
 					hash: "#data"
 				}
 			};
+		},
+		beforeRouteEnter(to, from, next) {
+			if (true) {
+				next();
+			} else {
+				next(false);
+			}
+			// won't have access to the instance for 'this' file because it hasn't been created until next() is called
+			// you can access it with a call back as seen below if needed
+			// next(vm => {
+			// 	console.log("vm.link: ", vm.link);
+			// });
 		}
 	};
 </script>
