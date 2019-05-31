@@ -5,22 +5,24 @@ import Header from "./components/Header";
 const User = resolve => {
       require.ensure(['./components/user/User.vue'], () => {
             resolve(require('./components/user/User.vue'));
-      });
+      }, 'user');
+      // you can additionally group lazy loaded components by adding a group name, so
+      // so when one is accessed, they all get loaded.
 }
 const UserStart = resolve => {
       require.ensure(['./components/user/UserStart.vue'], () => {
             resolve(require('./components/user/UserStart.vue'));
-      });
+      }, 'user');
 }
 const UserEdit = resolve => {
       require.ensure(['./components/user/UserEdit.vue'], () => {
             resolve(require('./components/user/UserEdit.vue'));
-      });
+      }, 'user');
 }
 const UserDetail = resolve => {
       require.ensure(['./components/user/UserDetail.vue'], () => {
             resolve(require('./components/user/UserDetail.vue'));
-      });
+      }, 'user');
 }
 
 
