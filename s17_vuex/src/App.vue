@@ -8,6 +8,12 @@
 				<hr>
 				<app-counter></app-counter>
 				<app-another-counter></app-another-counter>
+				<hr>
+				<!-- OPTION 1
+				<input type="text" :value="value" @input="updateValue">-->
+				<!-- OPTION 2 -->
+				<input type="text" v-model="value">
+				<p>{{value}}</p>
 			</div>
 		</div>
 	</div>
@@ -20,6 +26,30 @@
 	import AnotherResult from "./components/AnotherResult.vue";
 
 	export default {
+		// OPTION 2 for 2 way data binding with Vuex:
+		// using getters and setters for computed properties
+		computed: {
+			value: {
+				get() {
+					return this.$store.getters.value;
+				},
+				set(value) {
+					this.$store.dispatch("updateValue", value);
+				}
+			}
+		},
+		// OPTION 1 for 2 way data binding with Vuex:
+		////// 1. create state and getters
+		////// 2. create mutations that adjust the state
+		////// 3. create actions that pass payload and perform async functionality
+		////// 4. create a method that takes the event, then use dispatch to call the action and pass
+		////// the value from the event.
+		////// 5. make sure the component sets :value="getter" @input="method(to call action and pass paylod"
+		methods: {
+			updateValue(ev) {
+				this.$store.dispatch("updateValue", ev.target.value);
+			}
+		},
 		components: {
 			appCounter: Counter,
 			appAnotherCounter: AnotherCounter,
