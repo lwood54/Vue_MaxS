@@ -1,14 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
+const state = {
+      counter: 0
+};
 
-Vue.use(Vuex);
-
-export const store = new Vuex.Store({
-  state: { // holds application data
-      counter: 0,
-      value: 0
-  },
-  getters: { // accesses state
+const getters = {
       counter: state => {
             return state.counter;
       },
@@ -17,25 +11,20 @@ export const store = new Vuex.Store({
         },
         stringCounter: state => {
               return state.counter + " Clicks";
-        },
-        value: state => {
-              return state.value;
         }
-  },
-  mutations: { // initiates actual change to the state
-        increment: (state, payload) => {
-              state.counter += payload;
-        },
-        decrement: (state, payload) => {
-              state.counter -= payload;
-        },
-        updateValue: (state, payload) => {
-              state.value = payload;
-        }
-  },
-  actions: { // handles the instruction calls, this is where async functions can be handled
+}
+
+const mutations = {
+      increment: (state, payload) => {
+            state.counter += payload;
+      },
+      decrement: (state, payload) => {
+            state.counter -= payload;
+      }
+}
+
+const actions = {
       increment: ({commit}, payload) => {
-            console.log('actions - increment: ', commit, ':: payload --> ', payload);
             // if not destructured like above, then you can use context.commit();
             commit('increment', payload);
       },
@@ -52,9 +41,12 @@ export const store = new Vuex.Store({
             setTimeout(() => {
                   commit('decrement', payload.by);
             }, payload.duration);
-      },
-      updateValue({commit}, payload) {
-            commit('updateValue', payload);
       }
-  }
-});
+}
+
+export default {
+      state,
+      getters,
+      mutations,
+      actions
+}

@@ -35,7 +35,10 @@
 		computed: {
 			...mapGetters(["doubleCounter", "stringCounter"]),
 			multiplyBy3() {
-				return this.$store.state.counter * 3;
+				// NOTE: When state is setup with modules, you can't just access state directly, it seems that
+				// you can only access it through the getters
+				// console.log(this.$store.getters.counter);
+				return this.$store.getters.counter * 3;
 			}
 		}
 	};
