@@ -2,7 +2,7 @@
 	<div>
 		<!-- <p>Counter is: {{ counter }}</p>
 		<p>Number of clicks: {{ clicks }}</p>-->
-		<p>Counter is: {{doubleCounter}}</p>
+		<p>AnotherResult.vue - Double Counter is: {{doubleCounter}}</p>
 		<p>Number of clicks: {{stringCounter}}</p>
 		<p>Counter X 3: {{multiplyBy3}}</p>
 		<!-- <p>Counter is: {{dubCount}}</p>
