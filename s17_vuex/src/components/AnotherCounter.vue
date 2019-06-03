@@ -8,6 +8,7 @@
 <script>
 	// import { mapMutations } from "vuex";
 	import { mapActions } from "vuex";
+	import * as types from "../store/types";
 
 	export default {
 		methods: {
@@ -19,7 +20,11 @@
 			// 	this.$store.commit("decrement");
 			// }
 			// ...mapMutations(["increment", "decrement"]) // BEST PRACTICE is to mapActions here instead of mutating directly from components
-			...mapActions(["asyncIncrement", "asyncDecrement"])
+			// ...mapActions(["asyncIncrement", "asyncDecrement"])
+			...mapActions({
+				asyncIncrement: types.COUNTER_INCREMENT_ASYNC,
+				asyncDecrement: types.COUNTER_DECREMENT_ASYNC
+			})
 		}
 	};
 </script>

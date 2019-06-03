@@ -24,6 +24,7 @@
 	import AnotherCounter from "./components/AnotherCounter.vue";
 	import Result from "./components/Result.vue";
 	import AnotherResult from "./components/AnotherResult.vue";
+	import * as types from "./store/types";
 
 	export default {
 		// OPTION 2 for 2 way data binding with Vuex:
@@ -31,10 +32,10 @@
 		computed: {
 			value: {
 				get() {
-					return this.$store.getters.value;
+					return this.$store.getters[types.VALUE];
 				},
 				set(value) {
-					this.$store.dispatch("updateValue", value);
+					this.$store.dispatch(types.UPDATE_VALUE, value);
 				}
 			}
 		},
@@ -47,7 +48,7 @@
 		////// 5. make sure the component sets :value="getter" @input="method(to call action and pass paylod"
 		methods: {
 			updateValue(ev) {
-				this.$store.dispatch("updateValue", ev.target.value);
+				this.$store.dispatch(types.UPDATE_VALUE, ev.target.value);
 			}
 		},
 		components: {
