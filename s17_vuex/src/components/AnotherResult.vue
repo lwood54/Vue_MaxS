@@ -43,7 +43,10 @@
 				// NOTE: When state is setup with modules, you can't just access state directly, it seems that
 				// you can only access it through the getters
 				// console.log(this.$store.getters.counter);
-				console.log("types.COUNTER: ", types.COUNTER);
+				console.log(
+					"getters[types.COUNTER] ",
+					this.$store.getters.counter
+				);
 				return this.$store.getters[types.COUNTER] * 3;
 			}
 		}
