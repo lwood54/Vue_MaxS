@@ -13,16 +13,17 @@ Vue.component('another-component', {
       `
 })
 
+
 Vue.component('practice-vue', {
       data () {
         return {
           count: 0
         }
       },
-      template: `
+      template:`
       <div>
       <button v-on:click="count++">
-            You clicked me {{ count }} times.
+            You definitely clicked me {{ count }} times.
                   <slot></slot>
       </button>
       </div>
