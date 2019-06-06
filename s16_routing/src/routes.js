@@ -6,7 +6,7 @@ const User = resolve => {
       require.ensure(['./components/user/User.vue'], () => {
             resolve(require('./components/user/User.vue'));
       }, 'user');
-      // you can additionally group lazy loaded components by adding a group name, so
+      // you can additionally group lazy loaded components by adding a group name,
       // so when one is accessed, they all get loaded.
 }
 const UserStart = resolve => {
